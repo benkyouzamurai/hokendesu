@@ -106,9 +106,6 @@
     <div id="questionsContainer"></div>
 
     <div id="result"></div>
-
-    <div id="redirectButton" onclick="redirectToAnotherSite()">情報のサイトに行く</div>
-    <div id="redirectButton" onclick="redirectToAnotherSites()">公共のサイトに行く</div>
     
     <script>
         // 質問と回答のデータ（画像のURLを含む）
@@ -543,12 +540,7 @@
             const correctCount = document.querySelectorAll('.answer[style="color: green;"]').length;
             resultSummary.innerHTML = `正解数: ${correctCount} / ${correctAnswers.length}`;
         }
-        function redirectToAnotherSite() {
-            window.location.href = 'https://toraseserara-1.github.io/gakko-test/';
-        }
-        function redirectToAnotherSites() {
-            window.location.href = 'https://toraseserara-1.github.io/koukyou_test/';
-        }
+        
     </script>
 
     <p>問題の順番はランダムな順番になっています。更新すると問題の順番が変わりもう一回できます。</p>
