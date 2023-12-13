@@ -81,16 +81,57 @@
             color: #3498db;
             border: 2px solid #3498db;
         }
+        /* デフォルトのヘッダーを消す */
+        .header-image-wrapper {
+            display: none;
+        }
+   
+        #blog-title {
+            display: none;
+        }
+   
+        /* ヘッダー画像を画面サイズに自動で合わせる */
+        .header1 img, .header2 img {
+            display: block;
+            width: 100%;
+            margin: 0 auto;
+        }
+   
+        /* 画面がスマホサイズの時、PC版ヘッダーを消す */
+        .header1 {
+            display: none;
+        }
+   
+        /* 画面がスマホサイズの時、スマホ版ヘッダーを表示 */
+        .header2 {
+            display: block;
+        }
+   
+        /* メディアクエリ */
+        @media screen and (min-width: 480px) {
+   
+            /* 画面がPCサイズの時、PC版ヘッダーを表示 */
+            .header1 {
+                display: block;
+            }
+   
+            /* 画面がPCサイズの時、スマホ版ヘッダーを消す */
+            .header2 {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class = header-logo>
-        
-        <center>保健べんきょーサイト</center>
-        <div class = header-font>
-            <center>〈　〉があるときは〈　〉に適当な文字を入れてくたちぃ</center>
-        </div>
+     <!-- ヘッダー（PC版）-->
+    <div class="header1">
+        <img src="スマホヘッダーsyukusyouban.png">
     </div>
+   
+    <!-- ヘッダー（スマホ版）-->
+    <div class="header2">
+        <img src="スマホヘッダーsyukusyouban.png">
+        
     <div id="questionsContainer"></div>
 
     <div id="result"></div>
