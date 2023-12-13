@@ -86,41 +86,14 @@
             margin: 0 auto;
         }
    
-        /* 画面がスマホサイズの時、PC版ヘッダーを消す */
-        .header1 {
-            display: none;
-        }
-   
-        /* 画面がスマホサイズの時、スマホ版ヘッダーを表示 */
-        .header2 {
-            display: block;
-        }
-   
-        /* メディアクエリ */
-        @media screen and (min-width: 480px) {
-   
-            /* 画面がPCサイズの時、PC版ヘッダーを表示 */
-            .header1 {
-                display: block;
-            }
-   
-            /* 画面がPCサイズの時、スマホ版ヘッダーを消す */
-            .header2 {
-                display: none;
-            }
-        }
+       
     </style>
 </head>
 <body>
      <!-- ヘッダー（PC版）-->
     <div class="header1">
         <img src="スマホヘッダーsyukusyouban.png">
-    </div>
-   
-    <!-- ヘッダー（スマホ版）-->
-    <div class="header2">
-        <img src="スマホヘッダーsyukusyouban.png">
-        
+    </div>     
     <div id="questionsContainer"></div>
 
     <div id="result"></div>
