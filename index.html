@@ -9,6 +9,9 @@
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+        .question h2 {
+            font-size: 20px; /* 質問の文字サイズを変更する部分 */
+        }
 
         .question {
             margin-bottom: 15px;
@@ -76,14 +79,14 @@
 
     <div id="redirectButton" onclick="redirectToAnotherSite()">情報のサイトに行く</div>
     <div id="redirectButton" onclick="redirectToAnotherSites()">公共のサイトに行く</div>
-
+    <p>〈　〉内の</p>
     <script>
         // 質問と回答のデータ（画像のURLを含む）
         const questions = [
                 { 
-                question: '以下の図が表すロックが唱えた政治理論はなにか？', 
-                answers: ['二権分立論'], 
-                imageUrl: 'URL.png' 
+                question: '', 
+                answers: [''], 
+                imageUrl: '' 
                 },
                 {
                  question: '喫煙を続けることによって発病しやすくなる、がんや心臓病、COPDのことを何というか',
@@ -98,8 +101,8 @@
                  answers: ['受動']
                  },
                 {
-                 question: '',
-                 answers: ['']
+                 question: 'たばこに含まれる〈　　〉には依存性がある',
+                 answers: ['ニコチン']
                  },
                  {
                  question: '',
