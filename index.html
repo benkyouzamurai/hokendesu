@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保健問題サイト</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .question {
+            margin-bottom: 15px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .answer {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .question img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+
+        .quiz-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+        }
+
+        .quiz-button:hover {
+            background-color: white;
+            color: black;
+            border: 2px solid #4CAF50;
+        }
+
+        #redirectButton {
+            margin-top: 20px;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            transition-duration: 0.4s;
+        }
+
+        #redirectButton:hover {
+            background-color: white;
+            color: #3498db;
+            border: 2px solid #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div id="questionsContainer"></div>
+
+    <div id="result"></div>
+
+    <div id="redirectButton" onclick="redirectToAnotherSite()">情報のサイトに行く</div>
+    <div id="redirectButton" onclick="redirectToAnotherSites()">公共のサイトに行く</div>
+
+    <script>
+        // 質問と回答のデータ（画像のURLを含む）
+        const questions = [
+                {
+                 question: '異なる意見や利害の対立を調整し、対立の解消を目指すはたらき。',
+                 answers: ['政治']
+                 },
+            
+        ];
+            // 他の質問も同様に追加
+
+        // 問題の順番をランダムにシャッフル
+        const shuffledQuestions = shuffleArray(questions);
+
+        // HTMLに質問を表示
+        const questionsContainer = document.getElementById('questionsContainer');
+        shuffledQuestions.forEach((q, index) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.classList.add('question');
+            questionDiv.innerHTML = `
+                <h2>${q.question}</h2>
+                ${q.imageUrl ? `<img src="${q.imageUrl}" alt="問題の画像">` : ''}
+                <input type="text" id="q${index + 1}">
+                <button class="quiz-button" onclick="checkAnswer(${index + 1})">回答する</button>
+                <div id="result${index + 1}" class="answer"></div>
+            `;
+            questionsContainer.appendChild(questionDiv);
+        });
+
+        // ランダムに配列をシャッフルする関数
+        function shuffleArray(array) {
+            const shuffledArray = [...array];
+            for (let i = shuffledArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+            }
+            return shuffledArray;
+        }
+
+        // 正解の回答を定義
+        const correctAnswers = shuffledQuestions.map(q => q.answers);
+
+        // 各問題ごとに回答をチェックする関数
+        function checkAnswer(questionNumber) {
+            // ユーザーの回答を取得
+            const userAnswer = document.getElementById(`q${questionNumber}`).value.trim().toUpperCase();
+
+            // 正解と比較して結果を表示
+            const resultDiv = document.getElementById(`result${questionNumber}`);
+            if (correctAnswers[questionNumber - 1].includes(userAnswer)) {
+                resultDiv.innerHTML = '正解！';
+                resultDiv.style.color = 'green';
+            } else {
+                resultDiv.innerHTML = '不正解。正しい回答は ' + correctAnswers[questionNumber - 1].join(' または ');
+                resultDiv.style.color = 'red';
+            }
+
+            // 全体の結果を表示
+            const resultSummary = document.getElementById('result');
+            const correctCount = document.querySelectorAll('.answer[style="color: green;"]').length;
+            resultSummary.innerHTML = `正解数: ${correctCount} / ${correctAnswers.length}`;
+        }
+        function redirectToAnotherSite() {
+            window.location.href = 'https://toraseserara-1.github.io/gakko-test/';
+        }
+        function redirectToAnotherSites() {
+            window.location.href = 'https://toraseserara-1.github.io/koukyou_test/';
+        }
+    </script>
+
+    <p>問題の順番はランダムな順番になっています。更新すると問題の順番が変わりもう一回できます。</p>
+    
+</body>
+</html>
